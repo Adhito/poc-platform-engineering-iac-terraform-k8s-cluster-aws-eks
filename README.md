@@ -330,3 +330,4 @@ Items that are not blocking deployment but are planned for future enhancement.
 | Kubernetes manifests | High | App deployments — separate concern / repo |
 | Monitoring & Logging | High | CloudWatch Container Insights |
 | Cluster Autoscaler | Medium | More dynamic scaling than the weekend scheduler |
+
