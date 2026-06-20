@@ -1,0 +1,10 @@
+# Copy this file to backend.tfvars and fill in your values.
+# The S3 bucket must be created manually before running terraform init.
+# State locking uses S3 native locking (Terraform >= 1.11) — no DynamoDB needed.
+# See README section 3 for the bootstrap commands.
+
+bucket       = "YOUR-TERRAFORM-STATE-BUCKET-NAME"
+key          = "eks-env-development/terraform.tfstate"   # use eks-env-staging/terraform.tfstate for env-staging
+region       = "ap-southeast-3"
+encrypt      = true
+use_lockfile = true
