@@ -72,6 +72,20 @@ Provisions a managed Kubernetes cluster on AWS EKS using Terraform. Designed wit
 
 AWS credentials must be configured (`aws configure` or environment variables). The IAM identity you use needs permissions to create VPCs, EC2 instances, IAM roles, EKS clusters, Lambda functions, and EventBridge rules.
 
+**AWS CLI profile:** The helper scripts (`connect-bastion-dev.sh`, `tunnel-dev.sh`) default to a named profile called `adhito-irmandharu-eks`. If your profile name is different, set `AWS_PROFILE` before running any script:
+
+```bash
+# Use a different profile for a single run
+AWS_PROFILE=my-profile bash scripts/connect-bastion-dev.sh
+AWS_PROFILE=my-profile bash scripts/tunnel-dev.sh
+
+# Or export it for the whole shell session
+export AWS_PROFILE=my-profile
+bash scripts/connect-bastion-dev.sh
+```
+
+The default profile name can be changed permanently by editing the `AWS_PROFILE` fallback value at the top of each script.
+
 ---
 
 ## 3. Bootstrap — S3 Backend
@@ -115,7 +129,7 @@ cp backend.tfvars.example backend.tfvars
 ```
 
 Open `backend.tfvars` and fill in the bucket name for your target environment:
-
+ 
 ```hcl
 # env-development
 bucket       = "eks-tf-state-env-development"
